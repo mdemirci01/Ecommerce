@@ -22,24 +22,44 @@ namespace Ecommerce.Data
             entities.Remove(entity);
         }
 
-        public T Get(string id)
+        public T Get(string id, params string[] navigations)
         {
-            return entities.FirstOrDefault(e => e.Id == id);
+            var query = entities.AsNoTracking().AsQueryable();
+            foreach (var nav in navigations)
+            {
+                query = query.Include(nav);
+            }
+            return query.FirstOrDefault(e => e.Id == id);
         }
 
-        public T Get(Expression<Func<T, bool>> where)
+        public T Get(Expression<Func<T, bool>> where, params string[] navigations)
         {
-            return entities.Where(where).FirstOrDefault();
+            var query = entities.AsNoTracking().AsQueryable();
+            foreach (var nav in navigations)
+            {
+                query = query.Include(nav);
+            }
+            return query.Where(where).FirstOrDefault();
         }
 
-        public IList<T> GetAll()
+        public IList<T> GetAll(params string[] navigations)
         {
-            return entities.ToList();
+            var query = entities.AsNoTracking().AsQueryable();
+            foreach (var nav in navigations)
+            {
+                query = query.Include(nav);
+            }
+            return query.ToList();
         }
 
-        public IList<T> GetAll(Expression<Func<T, bool>> where)
+        public IList<T> GetAll(Expression<Func<T, bool>> where, params string[] navigations)
         {
-            return entities.Where(where).ToList();
+            var query = entities.AsNoTracking().AsQueryable();
+            foreach (var nav in navigations)
+            {
+                query = query.Include(nav);
+            }
+            return query.Where(where).ToList();
         }
 
         public void Insert(T entity)

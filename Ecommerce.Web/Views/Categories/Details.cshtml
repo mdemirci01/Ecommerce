@@ -1,11 +1,14 @@
-﻿@model Ecommerce.Model.Product
+﻿@model Ecommerce.Model.Category
 
 @{
-    ViewData["Title"] = "Ürün Detayı";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Ürün Detayı</h1>
+<h1>Details</h1>
+
 <div>
+    <h4>Category</h4>
+    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -18,18 +21,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedAt)

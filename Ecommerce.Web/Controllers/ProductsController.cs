@@ -45,7 +45,11 @@ namespace Ecommerce.Web.Controllers
             return View(product);
 
         }
-
+        public IActionResult Delete(string id)
+        {
+            productService.Delete(id);
+            return RedirectToAction("Index");
+        }
         public IActionResult Edit(string id)
         {
             var product = productService.Get(id);

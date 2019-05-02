@@ -8,10 +8,10 @@ namespace Ecommerce.Data
 {
     public interface IRepository<T> where T:BaseEntity
     {
-        IList<T> GetAll();
-        IList<T> GetAll(Expression<Func<T, bool>> where);
-        T Get(string id);
-        T Get(Expression<Func<T, bool>> where);
+        IList<T> GetAll(params string[] navigation);
+        IList<T> GetAll(Expression<Func<T, bool>> where, params string[] navigation);
+        T Get(string id, params string[] navigation);
+        T Get(Expression<Func<T, bool>> where, params string[] navigation);
         void Insert(T entity);
         void Update(T entity);
         void Delete(T entity);

@@ -36,7 +36,7 @@ namespace Ecommerce.Service
 
         public Product Get(string id)
         {
-            return productRepository.Get(id);
+            return productRepository.Get(id, "Category");
         }
 
         public IList<Product> GetAll()
